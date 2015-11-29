@@ -53,7 +53,10 @@ def parseCSVData(csvfile):
     data = []
     rowIndex = 0
     spamreader = csv.reader(csvfile, delimiter=',')
+    rowNum = 0
     for row in spamreader:
+        print "At Row Num:", rowNum
+        rowNum+=1
         if rowIndex !=0:
             element = {}
             fieldnames = ("PostId","PostCreationDate","OwnerUserId","OwnerCreationDate","ReputationAtPostCreation","OwnerUndeletedAnswerCountAtPostTime","Title","BodyMarkdown","Tag1","Tag2","Tag3","Tag4","Tag5","PostClosedDate","OpenStatus")
