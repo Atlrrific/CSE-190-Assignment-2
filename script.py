@@ -49,14 +49,17 @@ def dataCount(ownerCount,tagCount,openStatusCount,dateClosed,data):
     dateClosed = dateClosed
     return (tag1NotUsed,tag2NotUsed,tag3NotUsed,tag4NotUsed,tag5NotUsed)
 
-def parseCSVData(csvfile):
-    data = []
+
+def parseCSVData(csvfile,data):
     rowIndex = 0
     spamreader = csv.reader(csvfile, delimiter=',')
     rowNum = 0
     for row in spamreader:
         print "At Row Num:", rowNum
         rowNum+=1
+        if rowNum == 100000:
+            print "Exiting with ", len(data)
+            break
         if rowIndex !=0:
             element = {}
             fieldnames = ("PostId","PostCreationDate","OwnerUserId","OwnerCreationDate","ReputationAtPostCreation","OwnerUndeletedAnswerCountAtPostTime","Title","BodyMarkdown","Tag1","Tag2","Tag3","Tag4","Tag5","PostClosedDate","OpenStatus")
@@ -72,8 +75,8 @@ def parseCSVData(csvfile):
         else:
             rowIndex = 1
     return data
-
-data = parseCSVData(response)
+data = []
+parseCSVData(response,data)
 
 print len(data)
 
@@ -90,3 +93,48 @@ sorted_x = sorted(tagCount.items(), key=operator.itemgetter(1))
 
 sorted_x.reverse()
 print(len(sorted_x))
+
+words = [x[0] for x in sorted_x]
+
+wordId = dict(zip(words, range(len(words))))
+wordSet = set(words)    
+
+
+
+def feature(datum):
+    feat  = [0]*len(words)
+
+    if datum['Tag1']!='':
+        feat[wordId[datum['Tag1']]] = 1
+    if datum['Tag2']!='':
+        feat[wordId[datum['Tag2']]] = 1
+    if datum['Tag3']!='':
+        feat[wordId[datum['Tag3']]] = 1
+    if datum['Tag4']!='':
+        feat[wordId[datum['Tag4']]] = 1
+    if datum['Tag5']!='':
+        feat[wordId[datum['Tag5']]] = 1
+    
+    feat.append(datum['ReputationAtPostCreation'])
+    feat.append(datum['OwnerUndeletedAnswerCountAtPostTime'])
+    
+    return feat
+
+def result(datum):
+    if datum['OpenStatus']!='open':
+        return 1
+    
+    return 0
+
+X = [feature(d) for d in data]
+
+y = [result(d) for d in data]
+
+
+from sklearn import linear_model
+clf = linear_model.LogisticRegression()
+clf.fit(X, y)
+theta = clf.coef_
+predictions = clf.predict(X)
+print theta
+print "These are the predictions", predictions
