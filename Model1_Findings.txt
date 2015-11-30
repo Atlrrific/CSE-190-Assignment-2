@@ -1,0 +1,54 @@
+Findings , 
+from the model 1 we got a 0.97564 accuracy on the Test set of the OutputFinal3.csv file
+using 50,000 samples reviews.
+
+From the 16005 tags
+8,999 only had a weight within 0.05 and -0.05
+
+1,556 only had a weight within 0.01 and -0.01
+Furhter analysis need to be done in order to select the correct features. 
+A model woth 16000~ feautures is too complex.
+
+The top tag features that give the highest weight towards a closed questions were:
+[(3.9629141965120551, 'polls'),
+ (3.6011583362067965, 'books'),
+ (3.2733806274899968, 'legal'),
+ (2.9575760535200808, 'enterprise-development'),
+ (2.8501323043584139, 'podcast'),
+ (2.6786220574520621, 'outsourcing'),
+ (2.665884061600766, 'discussion'),
+ (2.569109605124678, 'teamwork'),
+ (2.5499409434584801, 'career-development'),
+ (2.4798313767856413, 'ebook'),
+ (2.4700262561460646, 'book'),
+ (2.2164755906328151, 'jobs'),
+ (2.1686838003455979, 'motivation'),
+ (2.1587624037958926, 'patents'),
+ (2.053354949101601, 'ergonomics'),
+ (1.9765912356052995, 'study'),
+ (1.9690624817005262, 'business'),
+ (1.9502891766949073, 'tutorials'),
+ (1.9464799305098792, '.net-3.0'),
+ (1.9334925149527047, 'copyright')]
+
+ Lest tags:
+ [(-1.7541927498124841, 'validation'),
+ (-1.6133853094700588, 'tsql'),
+ (-1.5130293812435553, 'ms-access'),
+ (-1.4914331363527273, 'memory'),
+ (-1.4872792927655318, 'wcf'),
+ (-1.4527833333306297, 'msbuild'),
+ (-1.4287056471397914, 'session'),
+ (-1.3818008074795778, 'class'),
+ (-1.3784245751732331, 'com'),
+ (-1.3756143910474969, 'sorting'),
+ (-1.3674756125471301, 'events'),
+ (-1.3634261307550097, 'usercontrols'),
+ (-1.3410296501564201, 'actionscript-3'),
+ (-1.3154371304127321, 'multithreading'),
+ (-1.3107528835018387, 'encoding'),
+ (-1.3062725045580195, 'asp.net-ajax'),
+ (-1.2738136961052531, 'reflection'),
+ (-1.2534862833902001, 'pointers'),
+ (-1.2452730690081875, 'datetime'),
+ (-1.2445550874914511, 'regular-expressions')]
