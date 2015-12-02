@@ -1,3 +1,67 @@
+Model 3. on test
+(324, 46822, 137, 2716)
+From removing 11000 0.5 to 0.5 values
+
+0.9429388587771755
+
+Model 3 new model using the 10,000 entries. 
+On original set
+(939, 112601, 277, 6183)
+0.9461666666666667
+
+Test Set:
+(313, 46832, 127, 2727)
+0.9429188583771675
+
+Model 3 with gradient descent logistic regression :
+(3, 112841, 37, 7119)
+0.9403666666666667
+
+
+Model 4:
+Take the tags with the highest value on the closed questions. 
+numofClosedQuestionsWith the TAg/ totalTag Questions.
+
+Then order them by most frequent. 
+Take the top 2000
+order them by closedQuestiosnRatio .
+Take the top 1000.	
+
+findings:
+on train set
+(422, 112685, 106, 6787)
+0.9425583333333334
+
+test set:
+(181, 46923, 47, 2848)
+0.9429188583771675
+
+Using 2000:
+train set
+864, 112483, 308, 6345)
+0.9445583333333334
+test set:
+(326, 46827, 143, 2703)
+0.9430788615772315
+
+Using all 5066:
+train:
+(886, 112505, 265, 6344)
+0.944925
+
+test:
+(310, 46914, 126, 2649)
+0.9444988899777995
+
+From Model1.txt: Model one using all the tags from the first 100,000 entries, 16006 feature representation
+
+
+With Model 2:
+(848, 93714, 286, 5152)
+
+(76, 93925, 75, 5924)
+
+
 Findings , 
 from the model 1 we got a 0.97564 accuracy on the Test set of the OutputFinal3.csv file
 using 50,000 samples reviews.
